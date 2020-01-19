@@ -1,5 +1,5 @@
 # PosterGenerator
-Een semi-automatische postergenerator voor S.V. RealTime
+Een semi-automatische postergenerator voor de promotiecommissie van S.V. RealTime.
 
 Gebruik:
  - Run image-test.py
