@@ -2,14 +2,15 @@ from PIL import Image, ImageDraw, ImageFont
 import requests
 import shutil
 
-# Create new image
 class newImage:
 
     def __init__(self):
+        # Set file size in pixel and fonts
         self.W, self.H = (1191,1684)
         self.fontTitle = ImageFont.truetype('fonts/MYRIADPRO-BOLD.otf', size=220)
         self.fontBody = ImageFont.truetype('fonts/MYRIADPRO-BOLD.otf', size=100)
 
+        # Set inputs
         self.title = input('Hoe heet het evenement? ')
         self.date = input('Wanneer is het? ')
         self.time = input('Van en tot wanneer is het? ')
@@ -18,8 +19,7 @@ class newImage:
         self.image_url_bg = input('Achtergrondfoto (URL naar foto) ')
         self.image_url_icon = input('Icon (URL naar foto) ')
 
-        #saveName = title + '.png'
-
+        # Create new file
         self.image = Image.new('RGBA', (self.W, self.H), color = 'black')
         
     def fetchImage(self):
@@ -46,6 +46,7 @@ class newImage:
         self.image2 = self.image2.resize((round((self.W*2)), self.H))
         self.image.paste(self.image2)
 
+        # Paste icon
         self.fetchIcon()
         self.image4 = Image.open('icon.png')
         self.image4 = self.image4.resize((200, 200))
@@ -62,14 +63,9 @@ class newImage:
         # Putting in the text
         draw = ImageDraw.Draw(self.image)
         w, h = draw.textsize(self.title)
-
-        #textlines = dict()
-        #textlines[date]=None
-        #textlines[time]=None
-        #textlines[adress]=None
-        #textlines[price] =None
         value = 0
 
+        # Set dictionary for inputs
         words = dict()
         words[100] = self.date
         words[200] = self.time
@@ -77,9 +73,9 @@ class newImage:
         words[400] = self.price
 
         draw.text(((self.W-w)/2,(self.H-h)/2), self.title, fill="white", font=self.fontTitle)
-        
+
+        # Iterate through dictionary
         for key in words.keys():
-            #textlines[key] = value + 100
             value = value + 100
             print(words[value])
             draw.text(((self.W-w)/2-500,(self.H-h)/2+value), words[value], fill="white", font=self.fontBody)
@@ -92,14 +88,4 @@ image.pasteBackground()
 image.pasteDecorations()
 image.inputText()
 image.saveImage()
-    
-#draw = ImageDraw.Draw(image)
-#draw.text(((W-w)/2,(H-h)/2), title, fill="white", font=fontTitle)
-#w, h = draw.textsize(date)
-#draw.text(((W-w)/2-500,(H-h)/2+100), date, fill="white", font=fontBody)
-#w, h = draw.textsize(time)
-#draw.text(((W-w)/2-500,(H-h)/2+200), time, fill="white", font=fontBody)
-#w, h = draw.textsize(adress)
-#draw.text(((W-w)/2-500,(H-h)/2+300), adress, fill="white", font=fontBody)
-#w, h = draw.textsize(price)
-#draw.text(((W-w)/2-500,(H-h)/2+400), price, fill="white", font=fontBody)
+
