@@ -16,8 +16,8 @@ class newImage:
         self.time = input('Van en tot wanneer is het? ')
         self.adress = input('Wat is het adres? (Straat + huisnummer) ')
         self.price = input('Hoeveel kost het? (Voor leden en niet-leden) ')
-        self.image_url_bg = input('Achtergrondfoto (URL naar foto) ')
-        self.image_url_icon = input('Icon (URL naar foto) ')
+        self.image_url_bg = input('Achtergrondfoto (URL naar foto) ').strip()
+        self.image_url_icon = input('Icon (URL naar foto) ').strip()
 
         # Create new file
         self.image = Image.new('RGBA', (self.W, self.H), color = 'black')
@@ -41,21 +41,21 @@ class newImage:
     def pasteBackground(self):
         # Paste background image
         self.fetchImage()
-        self.image2 = Image.open('achtergrond.jpg')
+        self.image2 = Image.open('achtergrond.jpg').convert('RGBA')
         w, h = self.image2.size
         self.image2 = self.image2.resize((round((self.W*2)), self.H))
         self.image.paste(self.image2)
 
         # Paste icon
         self.fetchIcon()
-        self.image4 = Image.open('icon.png')
+        self.image4 = Image.open('icon.png').convert('RGBA')
         self.image4 = self.image4.resize((200, 200))
         w, h = self.image4.size
         self.image.paste(self.image4, ((round((self.W-w)/2),round((self.H-h)/2-450))), self.image4)
         
     def pasteDecorations(self):
         # Paste logo, socials and gradient.
-        self.image3 = Image.open('logo-social-gradient.png')
+        self.image3 = Image.open('logo-social-gradient.png').convert('RGBA')
         self.image3 = self.image3.resize((self.W, self.H))
         self.image.paste(self.image3, (0, 0), self.image3)
 
