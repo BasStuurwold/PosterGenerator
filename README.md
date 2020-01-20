@@ -14,3 +14,6 @@ Het bestand wordt voor nu nog 'test.png' genoemd.
 De packages die je nodig hebt zijn:
  - PILLOW - pip install Pillow
  - requests - pip install requests
+ 
+ Versies:
+  - v1.0-alpha - Eerste alpha-release.
