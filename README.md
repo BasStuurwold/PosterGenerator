@@ -16,5 +16,5 @@ De packages die je nodig hebt zijn:
  - requests - pip install requests
  
  Versies:
-  - v1.1-alpha - Minor updates
+  - v1.1-alpha - Minor updates.
   - v1.0-alpha - Eerste alpha-release.
