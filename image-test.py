@@ -99,7 +99,9 @@ class newImage:
             draw.text((75,(self.H-h)/2+value+200), words[value], fill="white", font=self.fontBody)
 
     def saveImage(self):
-        self.image.save('test.png')
+        self.newImage = self.image.convert('RGB')
+        self.newImage.save(self.title + '.pdf')
+        self.newImage.save(self.title + '.png')
         
 image = newImage()
 image.pasteBackground()
